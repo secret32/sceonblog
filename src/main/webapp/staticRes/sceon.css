@@ -1,0 +1,65 @@
+.categories {
+    color: #798795;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+.categories .categories-title{
+    border-radius: 8px 8px 0 0;
+    background: #16a085 none repeat scroll 0 0 / 16px 16px;
+    color: #fff;
+    padding: 6px 25px;
+    position: relative;
+    font-size: 24px;
+}
+.categories ul {
+    background-color: #2c3e50;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.categories li {
+    /*background: #34495e;*/
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1.214;
+    margin-top: 2px;
+    padding: 10px 42px 12px 25px;
+    position: relative;
+    transition: all 0.25s ease 0s;
+    border-top: 1px solid #c4c4c4;
+}
+.categories li:hover {
+    color: #1abc9c;
+}
+.categories li:first-child {
+    margin-top: 0;
+}
+.categories li:last-child {
+    border-radius: 0 0 8px 8px;
+}
+.categories li .category-icon {
+    float: left;
+    font-size: 18px;
+    padding: 0 16px 0 0;
+}
+.categories li .category-name {
+    color: #fff;
+}
+.categories li:hover .category-name {
+    color: #1abc9c;
+}
+
+.friendLink {
+    background: #16a085;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 18px;
+}
+.friendLink .friendLink-title {
+    font-size: 24px;
+}
+.friendLink ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
