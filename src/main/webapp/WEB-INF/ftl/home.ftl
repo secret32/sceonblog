@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
 
     <!-- Loading Bootstrap -->
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${scheme}://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link href="http://cdn.bootcss.com/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet">
+    <link href="${scheme}://cdn.bootcss.com/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet">
 
     <link href="${resAccessPath}/staticRes/sceon.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/r23/html5.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+    <script src="${scheme}://cdn.bootcss.com/html5shiv/r23/html5.js"></script>
+    <script src="${scheme}://cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
 
     <style>
@@ -163,8 +163,8 @@
             Sceon Top
         </div>
     </footer>
-    <script src="http://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/flat-ui/2.3.0/js/flat-ui.min.js"></script>
+    <script src="${scheme}://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+    <script src="${scheme}://cdn.bootcss.com/flat-ui/2.3.0/js/flat-ui.min.js"></script>
     <script src="${resAccessPath}/staticRes/application.js"></script>
 </body>
 </html>

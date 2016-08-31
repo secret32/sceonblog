@@ -31,6 +31,7 @@ public class HtmlService {
         String template = HtmlTemplate.HOME.getFtl();
         String filepath = appConfig.getHtmlSavePath() + HtmlTemplate.HOME.getHtml();
         Map<String, Object> rootMap = new HashMap<>();
+        rootMap.put("scheme", appConfig.getScheme());
         rootMap.put("resAccessPath", appConfig.getResAccessPath());
         writeHtml(template, filepath, rootMap);
     }

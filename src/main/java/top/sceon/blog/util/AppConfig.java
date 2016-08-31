@@ -12,6 +12,8 @@ public class AppConfig {
     private String htmlSavePath;
     private String htmlAccessPath;
 
+    private String scheme;
+
     public String getResSavePath() {
         return resSavePath;
     }
@@ -42,5 +44,13 @@ public class AppConfig {
 
     public void setHtmlAccessPath(String htmlAccessPath) {
         this.htmlAccessPath = htmlAccessPath;
+    }
+
+    public String getScheme() {
+        return scheme;
+    }
+
+    public void setScheme(String scheme) {
+        this.scheme = scheme;
     }
 }

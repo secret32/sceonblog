@@ -29,9 +29,9 @@
 
     <bean id="appConfig" class="top.sceon.blog.util.AppConfig">
         <property name="resSavePath" value="${res.save.path}" />
-        <property name="resAccessPath" value="${res.access.path}" />
+        <property name="resAccessPath" value="${scheme}://${res.access.path}" />
         <property name="htmlSavePath" value="${html.save.path}" />
-        <property name="htmlAccessPath" value="${html.access.path}" />
+        <property name="htmlAccessPath" value="${scheme}://${html.access.path}" />
     </bean>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
