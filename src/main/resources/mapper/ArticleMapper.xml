@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ArticleMapper">
+  <resultMap id="BaseResultMap" type="top.sceon.blog.entity.Article">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="guid" jdbcType="VARCHAR" property="guid" />
+    <result column="userId" jdbcType="INTEGER" property="userId" />
+    <result column="categoryId" jdbcType="INTEGER" property="categoryId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="subtitle" jdbcType="VARCHAR" property="subtitle" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="like" jdbcType="INTEGER" property="like" />
+    <result column="unlike" jdbcType="INTEGER" property="unlike" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.sceon.blog.entity.Article">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, guid, userId, categoryId, title, subtitle, description, like, unlike, updateTime, 
+    status
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="top.sceon.blog.entity.Article">
+    insert into article (id, guid, userId, 
+      categoryId, title, subtitle, 
+      description, like, unlike, 
+      updateTime, status, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{guid,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{categoryId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{like,jdbcType=INTEGER}, #{unlike,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="top.sceon.blog.entity.Article">
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="guid != null">
+        guid,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="categoryId != null">
+        categoryId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="subtitle != null">
+        subtitle,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="like != null">
+        like,
+      </if>
+      <if test="unlike != null">
+        unlike,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="guid != null">
+        #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="like != null">
+        #{like,jdbcType=INTEGER},
+      </if>
+      <if test="unlike != null">
+        #{unlike,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="top.sceon.blog.entity.Article">
+    update article
+    <set>
+      <if test="guid != null">
+        guid = #{guid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        categoryId = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null">
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="like != null">
+        like = #{like,jdbcType=INTEGER},
+      </if>
+      <if test="unlike != null">
+        unlike = #{unlike,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="top.sceon.blog.entity.Article">
+    update article
+    set guid = #{guid,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=INTEGER},
+      categoryId = #{categoryId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      like = #{like,jdbcType=INTEGER},
+      unlike = #{unlike,jdbcType=INTEGER},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.sceon.blog.entity.Article">
+    update article
+    set guid = #{guid,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=INTEGER},
+      categoryId = #{categoryId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      subtitle = #{subtitle,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      like = #{like,jdbcType=INTEGER},
+      unlike = #{unlike,jdbcType=INTEGER},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

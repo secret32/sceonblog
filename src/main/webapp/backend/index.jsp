@@ -28,48 +28,24 @@
 
     <style>
         body {
-            overflow: hidden;
-            background-color: #1abc9c;
-        }
-        .login-form .login-field {
-            text-indent: 30px;
-        }
-        .login-form .login-field-icon {
-            right: 0px;
-            left: 15px;
-        }
-
-        @media (min-width: 1024px) {
-            .login-screen {
-                padding: 13% 30%;
-            }
-        }
-        @media (min-width: 600px) and (max-width: 1024px) {
-            .login-screen {
-                padding: 13% 25%;
-            }
-        }
-        @media (max-width: 600px) {
-            .login-screen {
-                padding: 13% 15%;
-            }
+            overflow-x: hidden;
+            background-color: #95a5a6;
         }
     </style>
 </head>
 <body>
+    <c:import url="top.jsp" charEncoding="UTF-8"></c:import>
     <div class="container">
         <div class="row">
-            <a href="<%=path%>/manage/html/home">Login Successfully!</a>
+            <div class="col-md-2 col-xs-2">
+                <c:import url="left.jsp" charEncoding="UTF-8"></c:import>
+            </div>
+            <div class="col-md-10 col-xs-10">
+                欢迎使用<b>Sceon Blog</b>管理后台！
+            </div>
         </div>
     </div>
 
     <script src="//cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap-validator/0.5.2/js/language/en_US.js"></script>
-    <script>
-        $(document).ready(function() {
-
-        });
-    </script>
 </body>
 </html>

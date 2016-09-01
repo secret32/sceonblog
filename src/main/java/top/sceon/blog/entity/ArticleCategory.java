@@ -2,7 +2,7 @@ package top.sceon.blog.entity;
 
 import java.util.Date;
 
-public class Menu {
+public class ArticleCategory {
     private Integer id;
 
     private String guid;
@@ -10,14 +10,6 @@ public class Menu {
     private Integer userId;
 
     private String name;
-
-    private String alias;
-
-    private Integer parentId;
-
-    private Integer pageId;
-
-    private Integer ordinal;
 
     private Date updateTime;
 
@@ -53,38 +45,6 @@ public class Menu {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias == null ? null : alias.trim();
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-
-    public Integer getPageId() {
-        return pageId;
-    }
-
-    public void setPageId(Integer pageId) {
-        this.pageId = pageId;
-    }
-
-    public Integer getOrdinal() {
-        return ordinal;
-    }
-
-    public void setOrdinal(Integer ordinal) {
-        this.ordinal = ordinal;
     }
 
     public Date getUpdateTime() {

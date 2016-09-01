@@ -26,16 +26,15 @@ public class LoginController extends BaseController {
     public ModelAndView login(HttpServletRequest request, String username, String password, String verifyCode) {
         ModelAndView result;
         HttpSession session = request.getSession();
-        String userId = (String) session.getAttribute(SessionKey.USER_ID);
-        if (username == null && password == null && userId != null) {
+        String sessionUsername = (String) session.getAttribute(SessionKey.USERNAME);
+        if (username == null && password == null && sessionUsername != null) {
             result = new ModelAndView("/backend/index");
-            result.addObject("username", userId);
-            session.setAttribute(SessionKey.USER_ID, userId);
         } else if (username != null) {
             if (PASSWORD.equals(HashUtil.sha1(password))) {
                 result = new ModelAndView("/backend/index");
                 result.addObject("username", username);
-                session.setAttribute(SessionKey.USER_ID, username);
+                session.setAttribute(SessionKey.USERNAME, username);
+                session.setAttribute(SessionKey.USER_ID, 1);
             } else {
                 result = new ModelAndView("/backend/login");
                 result.addObject("error", "Invalid username or password");

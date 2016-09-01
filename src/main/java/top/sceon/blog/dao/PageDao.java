@@ -10,6 +10,6 @@ import top.sceon.blog.entity.Page;
 @Repository
 public class PageDao extends BaseDaoImpl<Page, Integer> implements IBaseDao<Page, Integer> {
     public PageDao() {
-        super("page");
+        super("mapper.PageMapper");
     }
 }

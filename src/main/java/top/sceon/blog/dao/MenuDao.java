@@ -10,6 +10,6 @@ import top.sceon.blog.entity.Menu;
 @Repository
 public class MenuDao extends BaseDaoImpl<Menu, Integer> implements IBaseDao<Menu, Integer> {
     public MenuDao() {
-        super("menu");
+        super("mapper.MenuMapper");
     }
 }

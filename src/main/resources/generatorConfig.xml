@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 		
 <generatorConfiguration>
-    <context id="DB2Tables" targetRuntime="Ibatis2Java5">
+    <context id="DB2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
@@ -16,11 +16,11 @@
         <javaTypeResolver >
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
-        <javaModelGenerator targetPackage="top.sceon.blog.entity" targetProject="MAVEN">
+        <javaModelGenerator targetPackage="top.sceon.blog.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="mappers" targetProject="MAVEN">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
         <!--
@@ -28,10 +28,26 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         -->
-        <table tableName="article" domainObjectName="E_Article"
+        <table tableName="article" domainObjectName="Article"
 			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false" >
 			<property name="useActualColumnNames" value="true"/>
 		</table>
+        <!--<table tableName="article_category" domainObjectName="ArticleCategory"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="menu" domainObjectName="Menu"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="page" domainObjectName="Page"-->
+               <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" >-->
+            <!--<property name="useActualColumnNames" value="true"/>-->
+        <!--</table>-->
+
     </context>
 </generatorConfiguration>

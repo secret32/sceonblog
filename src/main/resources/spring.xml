@@ -10,8 +10,12 @@
 
     <context:annotation-config />
 
-    <context:component-scan base-package="top.sceon.blog">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    <aop:config proxy-target-class="true"/>
+    <context:component-scan base-package="top.sceon.blog.dao">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+    </context:component-scan>
+    <context:component-scan base-package="top.sceon.blog.service">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
 
     <context:property-placeholder location="classpath*:*.properties" />

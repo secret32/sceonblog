@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import top.sceon.blog.controller.BaseController;
-import top.sceon.blog.entity.Category;
-import top.sceon.blog.service.CategoryService;
+import top.sceon.blog.entity.ArticleCategory;
+import top.sceon.blog.service.ArticleCategoryService;
 import top.sceon.blog.util.Pages;
 
 import javax.annotation.Resource;
@@ -20,37 +20,37 @@ import javax.annotation.Resource;
  * @since 2016/9/1
  */
 @Controller
-@RequestMapping(path = "/manage/category")
-public class CategoryController extends BaseController {
+@RequestMapping(path = "/manage/articleCategory")
+public class ArticleCategoryController extends BaseController {
 
-    final private Log logger = LogFactory.getLog(CategoryController.class);
+    final private Log logger = LogFactory.getLog(ArticleCategoryController.class);
 
     @Resource
-    private CategoryService categoryService;
+    private ArticleCategoryService articleCategoryService;
 
     @RequestMapping(path = "/list", method = RequestMethod.GET)
-    public ModelAndView list(Pages<Category> pages) {
+    public ModelAndView list(Pages<ArticleCategory> pages) {
         ModelAndView result = new ModelAndView("/backend/categoryList");
-        super.list(logger, categoryService, result, pages);
+        super.list(logger, articleCategoryService, result, pages);
         return result;
     }
 
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject save(Category category) {
-        return super.save(logger, categoryService, category);
+    public JSONObject save(ArticleCategory articleCategory) {
+        return super.save(logger, articleCategoryService, articleCategory);
     }
 
     @RequestMapping(path = "/get", method = RequestMethod.GET)
     @ResponseBody
     public JSONObject get(int id) {
-        return super.get(logger, categoryService, id);
+        return super.get(logger, articleCategoryService, id);
     }
 
     @RequestMapping(path = "/del", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject del(int id) {
-        return super.del(logger, categoryService, id);
+        return super.del(logger, articleCategoryService, id);
     }
 
 }
