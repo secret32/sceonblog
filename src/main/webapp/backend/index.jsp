@@ -35,13 +35,15 @@
 </head>
 <body>
     <c:import url="top.jsp" charEncoding="UTF-8"></c:import>
-    <div class="container">
+    <div class="container" style="width: 100%;">
         <div class="row">
-            <div class="col-md-2 col-xs-2">
+            <div class="col-md-2 col-xs-2" style="padding-left: 0;">
                 <c:import url="left.jsp" charEncoding="UTF-8"></c:import>
             </div>
             <div class="col-md-10 col-xs-10">
-                欢迎使用<b>Sceon Blog</b>管理后台！
+                <div class="row">
+                    欢迎使用<b>Sceon Blog</b>管理后台！
+                </div>
             </div>
         </div>
     </div>

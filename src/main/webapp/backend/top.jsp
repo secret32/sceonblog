@@ -2,6 +2,7 @@
 <style>
 .navbar {
     border-radius: 0;
+    margin-bottom: 0;
 }
 </style>
 <nav class="navbar navbar-inverse navbar-embossed" role="navigation">
