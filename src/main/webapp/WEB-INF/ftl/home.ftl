@@ -43,31 +43,33 @@
           <a class="navbar-brand" href="#">SceonTop</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-01">
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="#fakelink">Menu Item<span class="navbar-unread">1</span></a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
-              <span class="dropdown-arrow"></span>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
-            <li><a href="#fakelink">About Us</a></li>
-           </ul>
-           <form class="navbar-form navbar-right" action="#" role="search">
-            <div class="form-group">
-              <div class="input-group">
-                <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-                <span class="input-group-btn">
-                  <button type="submit" class="btn"><span class="fui-search"></span></button>
-                </span>
-              </div>
-            </div>
-          </form>
+            <ul class="nav navbar-nav navbar-left">
+                <#list menuList as menu>
+                    <#if menu.children?? and menu.children?size gt 0>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${menu.menu.name} <b class="caret"></b></a>
+                        <span class="dropdown-arrow"></span>
+                        <ul class="dropdown-menu">
+                            <#list menu.children as subMenu>
+                                <li><a href="${subMenu.menuUrl}">${subMenu.menu.name}</a></li>
+                            </#list>
+                        </ul>
+                        </li>
+                    <#else>
+                        <li><a href="${menu.linkUrl}">${menu.menu.name}</a></li>
+                    </#if>
+                </#list>
+            </ul>
+            <form class="navbar-form navbar-right" action="#" role="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn"><span class="fui-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
         </div><!-- /.navbar-collapse -->
     </nav><!-- /navbar -->
     <div class="container-fluid">

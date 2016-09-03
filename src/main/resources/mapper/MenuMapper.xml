@@ -27,83 +27,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="top.sceon.blog.entity.Menu">
-    insert into menu (id, guid, userId, 
-      name, alias, parentId, 
-      pageId, ordinal, updateTime, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{guid,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+    insert into menu (guid, userId, name, alias, parentId, pageId, ordinal, status)
+    values (#{guid,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
       #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
-      #{pageId,jdbcType=INTEGER}, #{ordinal,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER})
+      #{pageId,jdbcType=INTEGER}, #{ordinal,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="top.sceon.blog.entity.Menu">
-    insert into menu
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="guid != null">
-        guid,
-      </if>
-      <if test="userId != null">
-        userId,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="alias != null">
-        alias,
-      </if>
-      <if test="parentId != null">
-        parentId,
-      </if>
-      <if test="pageId != null">
-        pageId,
-      </if>
-      <if test="ordinal != null">
-        ordinal,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="guid != null">
-        #{guid,jdbcType=VARCHAR},
-      </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="alias != null">
-        #{alias,jdbcType=VARCHAR},
-      </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="pageId != null">
-        #{pageId,jdbcType=INTEGER},
-      </if>
-      <if test="ordinal != null">
-        #{ordinal,jdbcType=INTEGER},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="top.sceon.blog.entity.Menu">
+  <update id="updateParam" parameterType="top.sceon.blog.entity.Menu">
     update menu
     <set>
       <if test="guid != null">
@@ -138,15 +67,41 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="top.sceon.blog.entity.Menu">
     update menu
-    set guid = #{guid,jdbcType=VARCHAR},
-      userId = #{userId,jdbcType=INTEGER},
+    set
       name = #{name,jdbcType=VARCHAR},
       alias = #{alias,jdbcType=VARCHAR},
       parentId = #{parentId,jdbcType=INTEGER},
       pageId = #{pageId,jdbcType=INTEGER},
       ordinal = #{ordinal,jdbcType=INTEGER},
-      updateTime = #{updateTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <select id="selectParam" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" /> from menu <include refid="params" />
+    </select>
+    <sql id="params">
+        <where>
+            <if test="userId != null">
+                userId = #{userId,jdbcType=INTEGER}
+            </if>
+            <if test="name != null">
+                and name like "%${name}%"
+            </if>
+            <if test="alias != null">
+                and alias like "%${alias}%"
+            </if>
+            <if test="parentId != null">
+                and parentId = #{parentId,jdbcType=INTEGER}
+            </if>
+            <if test="pageId != null">
+                and pageId = #{pageId,jdbcType=INTEGER}
+            </if>
+            <if test="ordinal != null">
+                and ordinal = #{ordinal,jdbcType=INTEGER}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=INTEGER}
+            </if>
+        </where>
+    </sql>
 </mapper>
