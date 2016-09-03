@@ -74,95 +74,60 @@
     </nav><!-- /navbar -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7 col-md-offset-1 col-xs-11">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading without title</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-footer">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading without title</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-footer">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading without title</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-footer">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Panel heading without title</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                    <div class="panel-footer">
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-11">
-                <div class="categories">
-                    <div class="categories-title">
-                        文章分类
-                    </div>
-                    <ul>
-                        <li>
-                            <div class="category-icon fui-location"></div>
-                            <div class="category-content">
-                                <div class="category-name">
-                                    分类一
-                                </div>
+            <#if noteList?? and noteList?size gt 0>
+                <div class="col-md-7 col-md-offset-1 col-xs-11">
+                    <#list articleList as article>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">${article.title}</div>
+                            <div class="panel-body">
+                                ${article.description}
                             </div>
-                        </li>
-                        <li>
-                            <div class="category-icon fui-location"></div>
-                            <div class="category-content">
-                                <div class="category-name">
-                                    分类二
-                                </div>
+                            <div class="panel-footer">
+                                最近编辑时间 ${article.updateTime?string("yyyy-MM-dd HH:mm:ss")}
+                                <!--<span class="glyphicon glyphicon-thumbs-up"></span>-->
                             </div>
-                        </li>
-                        <li>
-                            <div class="category-icon fui-location"></div>
-                            <div class="category-content">
-                                <div class="category-name">
-                                    分类三
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div><!-- /.todo -->
-
-                <div class="friendLink">
-                    <div class="friendLink-title">
-                        友情链接
-                    </div>
-                    <ul>
-                        <li>www.test.com</li>
-                        <li>www.test.com</li>
-                        <li>www.test.com</li>
-                        <li>www.test.com</li>
-                        <li>www.test.com</li>
-                    </ul>
+                        </div>
+                    </#list>
                 </div>
-            </div>
+                <div class="col-md-3 col-xs-11">
+                    <#list noteList as note>
+                        <div class="friendLink">
+                            <div class="friendLink-title">
+                                ${note.name}
+                            </div>
+                            <ul>
+                                <#list note.links as link>
+                                    <li><a href="${link.url}">${link.name}</a></li>
+                                </#list>
+                            </ul>
+                        </div>
+                    </#list>
+                </div>
+            <#else>
+                <div class="col-md-12 col-xs-12">
+                    <#list articleList as article>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">${article.title}</div>
+                            <div class="panel-body">
+                                ${article.description}
+                            </div>
+                            <div class="panel-footer">
+                                最近编辑时间 ${article.updateTime?string("yyyy-MM-dd HH:mm:ss")}
+                                <!--<span class="glyphicon glyphicon-thumbs-up"></span>-->
+                            </div>
+                        </div>
+                    </#list>
+                </div>
+            </#if>
         </div>
     </div>
     <footer>
         <div class="container">
-            Sceon Top
+            <div class="row">
+                <div class="col-md-11 col-md-offset-1 col-xs-11 col-xs-offset-1">
+                    <b>Sceon Top</b>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="${scheme}://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
