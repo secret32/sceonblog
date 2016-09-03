@@ -1,7 +1,5 @@
 package top.sceon.blog.dao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import top.sceon.blog.util.Pages;
@@ -17,8 +15,6 @@ import java.util.Map;
  * @since 2016/6/6
  */
 public class BaseDaoImpl<T, PK extends Serializable> extends SqlSessionDaoSupport implements IBaseDao<T, PK> {
-
-    final private static Log logger = LogFactory.getLog(BaseDaoImpl.class);
 
     // mapper.xml中的namespace
     protected String namespace;
@@ -59,122 +55,57 @@ public class BaseDaoImpl<T, PK extends Serializable> extends SqlSessionDaoSuppor
 
     @Override
     public int save(T entity) {
-        int rows = 0;
-        try {
-            rows = getSqlSession().insert(namespace + "." + SQLID_INSERT, entity);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return rows;
+        return getSqlSession().insert(namespace + "." + SQLID_INSERT, entity);
     }
 
     @Override
     public int update(T entity) {
-        int rows = 0;
-        try {
-            rows = getSqlSession().update(namespace + "." + SQLID_UPDATE,
-                    entity);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return rows;
+        return getSqlSession().update(namespace + "." + SQLID_UPDATE, entity);
     }
 
     @Override
     public int updateByParams(Map<String, Object> params) {
-        int rows = 0;
-        try {
-            rows = getSqlSession().update(namespace + "." + SQLID_UPDATE_PARAM, params);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return rows;
+        return getSqlSession().update(namespace + "." + SQLID_UPDATE_PARAM, params);
     }
 
     @Override
     public int delete(PK primaryKey) {
-        int rows = 0;
-        try {
-            rows = getSqlSession().delete(namespace + "." + SQLID_DELETE, primaryKey);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return rows;
+        return getSqlSession().delete(namespace + "." + SQLID_DELETE, primaryKey);
     }
 
     @Override
     public int deleteByParams(Map<String, Object> params) {
-        int rows = 0;
-        try {
-            rows = getSqlSession().delete(namespace + "." + SQLID_DELETE_PARAM, params);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return rows;
+        return getSqlSession().delete(namespace + "." + SQLID_DELETE_PARAM, params);
     }
 
 //    @Override
 //    public int truncate() {
-//        int rows = 0;
-//        try {
-//            rows = getSqlSession().delete(namespace + "." + SQLID_TRUNCATE);
-//        } catch (Exception e) {
-//            logger.error(e);
-//        }
-//        return rows;
+//        return getSqlSession().delete(namespace + "." + SQLID_TRUNCATE);
 //    }
 
     @Override
     public int countAll() {
-        int result = 0;
-        try {
-            result = getSqlSession().selectOne(namespace + "." + SQLID_COUNT);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return result;
+        return getSqlSession().selectOne(namespace + "." + SQLID_COUNT);
     }
 
     @Override
     public int countByParams(Map<String, Object> params) {
-        int result = 0;
-        try {
-            result = getSqlSession().selectOne(namespace + "." + SQLID_COUNT_PARAM, params);
-        } catch (Exception e) {
-            logger.error(e);
-        }
-        return result;
+        return getSqlSession().selectOne(namespace + "." + SQLID_COUNT_PARAM, params);
     }
 
     @Override
     public T get(PK primaryKey) {
-        try {
-            return getSqlSession().selectOne(namespace + "." + SQLID_SELECT_PK, primaryKey);
-        } catch (Exception e) {
-            logger.error(e);
-            return null;
-        }
+        return getSqlSession().selectOne(namespace + "." + SQLID_SELECT_PK, primaryKey);
     }
 
     @Override
     public List<T> findAll() {
-        try {
-            return getSqlSession().selectList(namespace + "." + SQLID_SELECT);
-        } catch (Exception e) {
-            logger.error(e);
-            return null;
-        }
-
+        return getSqlSession().selectList(namespace + "." + SQLID_SELECT);
     }
 
     @Override
     public List<T> findByParams(Map<String, Object> params) {
-        try {
-            return getSqlSession().selectList(namespace + "." + SQLID_SELECT_PARAM, params);
-        } catch (Exception e) {
-            logger.error(e);
-            return null;
-        }
+        return getSqlSession().selectList(namespace + "." + SQLID_SELECT_PARAM, params);
     }
 
     @Override
