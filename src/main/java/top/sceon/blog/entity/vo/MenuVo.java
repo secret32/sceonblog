@@ -2,6 +2,8 @@ package top.sceon.blog.entity.vo;
 
 import top.sceon.blog.entity.Menu;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,4 +46,11 @@ public class MenuVo {
         this.linkUrl = linkUrl;
     }
 
+    public static List<MenuVo> newList(List<Menu> menus) {
+        List<MenuVo> list = new ArrayList<>(menus.size());
+        for (Menu m : menus) {
+            list.add(new MenuVo(m, Collections.EMPTY_LIST, ""));
+        }
+        return list;
+    }
 }

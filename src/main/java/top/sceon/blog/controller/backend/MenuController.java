@@ -53,4 +53,17 @@ public class MenuController extends BaseController {
         return super.del(logger, menuService, id);
     }
 
+    @RequestMapping(path = "/changePage", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject changePage(int id, int pageId) {
+        JSONObject result = new JSONObject();
+        try {
+            menuService.updatePage(id, pageId);
+            s(result);
+        } catch (Exception e) {
+            e(result, e);
+        }
+        return result;
+    }
+
 }

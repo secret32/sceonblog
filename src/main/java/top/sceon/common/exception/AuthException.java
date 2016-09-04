@@ -6,4 +6,5 @@ package top.sceon.common.exception;
  */
 public class AuthException extends Exception {
 
+    private static final long serialVersionUID = -514430312195875709L;
 }

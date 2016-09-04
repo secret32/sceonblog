@@ -56,6 +56,22 @@ public class BaseController {
         }
     }
 
+    protected <T> JSONObject listJson(Log logger, IBaseService<T, Integer> service, Pages<T> pages) {
+        JSONObject result = new JSONObject();
+        if (pages == null) {
+            pages = new Pages<T>();
+        }
+        try {
+            pages = service.findPages(pages);
+            result.put("pages", pages);
+            s(result);
+        } catch (Exception e) {
+            logger.error(e);
+            e(result, e);
+        }
+        return result;
+    }
+
     protected <T> JSONObject save(Log logger, IBaseService<T, Integer> service, T entity) {
         JSONObject result = new JSONObject();
         try {

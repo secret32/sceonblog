@@ -139,18 +139,20 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime</artifactId>
             <version>1.5</version>
             <scope>test</scope>
         </dependency>
+        -->
     </dependencies>
 
     <build>
         <finalName>blog</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test</testSourceDirectory>
+        <!--<testSourceDirectory>src/test</testSourceDirectory>-->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -202,6 +204,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.codehaus.groovy.maven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
@@ -227,6 +230,7 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
         </plugins>
     </build>
 </project>

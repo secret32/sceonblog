@@ -45,7 +45,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-01">
             <ul class="nav navbar-nav navbar-left">
                 <#list menuList as menu>
-                    <#if menu.children?? and menu.children?size gt 0>
+                    <#if menu.children?size gt 0>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">${menu.menu.name} <b class="caret"></b></a>
                         <span class="dropdown-arrow"></span>
@@ -74,7 +74,7 @@
     </nav><!-- /navbar -->
     <div class="container-fluid">
         <div class="row">
-            <#if noteList?? and noteList?size gt 0>
+            <#if noteList?size gt 0>
                 <div class="col-md-7 col-md-offset-1 col-xs-11">
                     <#list articleList as article>
                         <div class="panel panel-default">

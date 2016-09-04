@@ -23,4 +23,8 @@ public class MenuService extends BaseServiceImpl<Menu, Integer> implements IBase
         this.menuDao = menuDao;
         super.setBaseDao(menuDao);
     }
+
+    public void updatePage(int id, int pageId) {
+        menuDao.updatePage(id, pageId);
+    }
 }

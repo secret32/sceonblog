@@ -35,6 +35,12 @@ public class PageController extends BaseController {
         return result;
     }
 
+    @RequestMapping(path = "/listJson", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject listJson(Pages<Page> pages) {
+        return super.listJson(logger, pageService, pages);
+    }
+
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject save(Page page) {

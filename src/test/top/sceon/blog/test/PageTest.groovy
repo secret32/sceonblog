@@ -7,12 +7,15 @@ import top.sceon.blog.service.PageService
 import top.sceon.common.util.ElementStatus
 import top.sceon.common.util.StringUtil
 
+import javax.annotation.Resource
+
 /**
  * @author zhouwei
  * @since 2016/9/3
  */
 class PageTest extends SpringBaseTest {
 
+    @Resource
     PageService pageService
 
     @Rollback(false)
@@ -22,6 +25,17 @@ class PageTest extends SpringBaseTest {
         page.guid = StringUtil.guid()
         page.userId = 1
         page.alias = "首页"
+        page.status = ElementStatus.OFFLINE
+        pageService.save(page)
+    }
+
+    @Rollback(false)
+    @Test
+    void add2() {
+        Page page = new Page()
+        page.guid = StringUtil.guid()
+        page.userId = 1
+        page.alias = "关于"
         page.status = ElementStatus.OFFLINE
         pageService.save(page)
     }

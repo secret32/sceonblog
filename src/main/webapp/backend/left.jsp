@@ -10,6 +10,7 @@
     position: static;
     padding-left: 0;
     padding-right: 0;
+    background: #34495E;
 }
 .sidebar ul {
     text-decoration: none;
@@ -24,7 +25,7 @@
 </style>
 <div id="sidebar" class="sidebar responsive" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
     <ul class="nav nav-list">
-        <li class="active open">
+        <li class="open">
             <a href="#" class="dropdown-toggle">
                 <span class="menu-text">
                     文章管理
@@ -51,12 +52,12 @@
             </ul>
         </li>
         <li class="">
-            <a href="#">
+            <a href="<%=path%>/manage/page/list">
                 <span class="menu-text"> 页面管理 </span>
             </a>
         </li>
         <li class="">
-            <a href="#">
+            <a href="<%=path%>/manage/menu/list">
                 <span class="menu-text"> 菜单管理 </span>
             </a>
         </li>
@@ -66,3 +67,8 @@
         <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
     </div>
 </div>
+<style>
+    $("#sidebar a").click(function() {
+        $(this).parent().addClass("open");
+    });
+</style>
