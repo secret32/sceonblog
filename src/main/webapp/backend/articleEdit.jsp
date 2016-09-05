@@ -15,8 +15,7 @@
     <!-- Loading Bootstrap -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Loading Flat UI -->
-    <link href="//cdn.bootcss.com/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/summernote/0.8.2/summernote.css" rel="stylesheet">
 
     <link href="//cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css" rel="stylesheet">
 
@@ -64,37 +63,40 @@
                                 </div>
                             </c:if>
                             <div class="form-group">
-                                <label for="title" class="col-md-2 col-xs-2 control-label">标题</label>
-                                <div class="col-md-9 col-xs-9">
+                                <label for="title" class="col-md-1 col-xs-1 control-label">标题</label>
+                                <div class="col-md-5 col-xs-5">
                                     <input type="text" class="form-control" value="" id="title" name="title" required />
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subtitle" class="col-md-2 col-xs-2 control-label">子标题</label>
-                                <div class="col-md-9 col-xs-9">
-                                    <input type="text" class="form-control" value="" id="subtitle" name="subtitle" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="category" class="col-md-2 col-xs-2 control-label">分类</label>
-                                <div class="col-md-3 col-xs-3">
-                                    <input type="text" class="form-control" value="" id="category" name="articleCategory" />
+                                <label for="category" class="col-md-1 col-xs-1 control-label">分类</label>
+                                <div class="col-md-2 col-xs-2">
+                                    <select class="form-control" value="" id="category" name="articleCategory"></select>
                                 </div>
                                 <div class="col-md-2 col-xs-2">
-                                    <button class="btn btn-block btn-md btn-primary"> 新建分类 </button>
+                                    <input id="addCategoryBtn" type="button" class="btn btn-block btn-md btn-primary" value="新建分类">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subtitle" class="col-md-1 col-xs-1 control-label">子标题</label>
+                                <div class="col-md-5 col-xs-5">
+                                    <input type="text" class="form-control" value="" id="subtitle" name="subtitle" />
                                 </div>
                                 <label for="tags" class="col-md-1 col-xs-1 control-label">标签</label>
-                                <div class="col-md-3 col-xs-3">
+                                <div class="col-md-4 col-xs-4">
                                     <input type="text" class="form-control" value="" id="tags" name="tags" />
                                 </div>
                             </div>
-                            <div class=" form-group">
-                                <label for="description" class="col-md-2 col-xs-2 control-label">简介</label>
-                                <div class="col-md-9 col-xs-9">
+                            <div class="form-group">
+                                <label for="description" class="col-md-1 col-xs-1 control-label">简介</label>
+                                <div class="col-md-10 col-xs-10">
                                     <textarea type="text" class="form-control" value="" id="description" name="description"></textarea>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label for="description" class="col-md-1 col-xs-1 control-label">正文</label>
+                                <div class="col-md-10 col-xs-10">
+                                    <div id="summernote"></div>
+                                </div>
+                            </div>
                             <!--<a class="login-link" href="#">Lost your password?</a>-->
                         </form>
                     </div>
@@ -103,6 +105,85 @@
         </div>
     </div>
 
+    <!-- add category modal -->
+    <div class="modal fade" id="addCategoryModal" tabindex="-3" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="addCategoryModalLabel">选择页面</h4>
+          </div>
+          <div class="modal-body">
+            <div class="panel panel-default areapanel col-md-12" style="float: none;">
+				<div class="panel-heading nav">
+				  <span class="navbar-brand">新建分类</span>
+				</div>
+				<form id="categoryForm" class="form-horizontal" role="form" method="post">
+				    <div class="modal-body" style="max-height: 450px; overflow-y: scroll;">
+                      <div class="form-group">
+                        <label for="categoryName" class="col-sm-2 control-label">分类名称</label>
+                        <div class="col-sm-8">
+                            <input id="categoryName" class="form-control" name="categoryName" value="" required>
+                        </div>
+                      </div>
+				    </div>
+				</form>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12 alert alert-danger" role="alert">
+            <strong>提示:</strong> 错误信息!
+            </div>
+          </div>
+		  <div class="modal-footer">
+		  	<div class="form-group">
+		  		<div class="col-sm-9 col-sm-offset-2">
+		  			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+		  			<button id="saveCategoryBtn" type="button" class="btn btn-primary">确定</button>
+		  		</div>
+		  	</div>
+		  </div>
+	    </div>
+	  </div>
+	</div>
+    <!-- add category modal end -->
+
     <script src="//cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/summernote/0.8.2/summernote.min.js"></script>
+    <script src="//cdn.bootcss.com/summernote/0.8.2/lang/summernote-zh-CN.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                maxHeight: 500,
+                height: 250,
+                width: "100%"
+            });
+            //var html = $('#summernote').summernote('code');
+
+            $("#addCategoryBtn").click(function() {
+                $("#categoryForm")[0].reset();
+                $("#addCategoryModal").modal("show");
+            });
+
+            $("#saveCategoryBtn").click(function() {
+                $.ajax({
+                    url: "<%=path%>/manage/articleCategory/save",
+                    type: "POST",
+                    data: "name=" + $("#categoryName").val(),
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.result == 1) {
+                            $("#category").append("<option value='" + data.entity.id + "' selected>" + data.entity.name + "</option>");
+                            $("#addCategoryModal").modal("hide");
+                        } else {
+                            $("#addCategoryModal .alert").html(data.error);
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+*:focus {
+    outline: none;
+}
 .categories {
     color: #798795;
     margin-bottom: 20px;

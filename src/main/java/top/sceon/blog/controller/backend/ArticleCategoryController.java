@@ -12,6 +12,10 @@ import top.sceon.blog.controller.BaseController;
 import top.sceon.blog.entity.ArticleCategory;
 import top.sceon.blog.service.ArticleCategoryService;
 import top.sceon.blog.util.Pages;
+import top.sceon.blog.util.Results;
+import top.sceon.blog.util.SessionKey;
+import top.sceon.common.util.ElementStatus;
+import top.sceon.common.util.StringUtil;
 
 import javax.annotation.Resource;
 
@@ -38,6 +42,17 @@ public class ArticleCategoryController extends BaseController {
     @RequestMapping(path = "/save", method = RequestMethod.POST)
     @ResponseBody
     public JSONObject save(ArticleCategory articleCategory) {
+        Integer userId = (Integer) session.getAttribute(SessionKey.USER_ID);
+        if (articleCategory.getId() == null) {
+            int count = articleCategoryService.countByProperties(new String[] {"userId", "exactName"},
+                    new Object[] {userId, articleCategory.getName()});
+            if (count > 0) {
+                return e(Results.CATEGORY_EXISTS);
+            }
+            articleCategory.setUserId(userId);
+            articleCategory.setGuid(StringUtil.guid());
+            articleCategory.setStatus(ElementStatus.OFFLINE);
+        }
         return super.save(logger, articleCategoryService, articleCategory);
     }
 

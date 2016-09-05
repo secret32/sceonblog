@@ -31,7 +31,7 @@ CREATE TABLE `article` (
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `like` int(10) NOT NULL DEFAULT '0',
   `unlike` int(10) NOT NULL DEFAULT '0',
-  `updateTime` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -47,7 +47,7 @@ CREATE TABLE `article_category` (
   `guid` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `userId` int(10) NOT NULL,
   `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `updateTime` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -64,7 +64,7 @@ CREATE TABLE `article_series` (
   `userId` int(10) NOT NULL,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `articleUpdateTime` timestamp NOT NULL,
-  `updateTime` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -123,7 +123,7 @@ CREATE TABLE `user_log` (
   `dst` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `opResult` int(1) NOT NULL,
   `opTime` timestamp NOT NULL,
-  `updateTime` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -142,7 +142,7 @@ CREATE TABLE `visitor_log` (
   `dstId` int(10) NOT NULL,
   `opDesc` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `opTime` timestamp NOT NULL,
-  `updateTime` timestamp NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

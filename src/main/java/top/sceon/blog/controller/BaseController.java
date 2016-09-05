@@ -2,16 +2,23 @@ package top.sceon.blog.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.logging.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import top.sceon.blog.service.IBaseService;
 import top.sceon.blog.util.Pages;
+import top.sceon.blog.util.Results;
 import top.sceon.common.util.StringUtil;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author zhou_wei
  * @date 8/29/2016
  */
 public class BaseController {
+
+    @Autowired
+    protected HttpSession session;
 
     /********************* return ***********************/
 
@@ -37,6 +44,13 @@ public class BaseController {
     final protected void e(JSONObject result, Exception e) {
         result.put(RESULT, EXCEPTION);
         result.put(ERROR, e.getMessage());
+    }
+
+    final protected JSONObject e(Results r) {
+        JSONObject result = new JSONObject();
+        result.put(RESULT, r.getCode());
+        result.put(ERROR, r.getMsg());
+        return result;
     }
 
     /********************** return end ************************/
@@ -76,6 +90,7 @@ public class BaseController {
         JSONObject result = new JSONObject();
         try {
             service.saveOrUpdate(entity);
+            result.put("entity", entity);
             s(result);
         } catch (Exception e) {
             logger.error(e);
